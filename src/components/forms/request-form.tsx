@@ -1,0 +1,186 @@
+"use client";
+
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
+import { CalendarDays, LoaderCircle, MapPin } from "lucide-react";
+import { toast } from "sonner";
+import { cities } from "@/lib/demo-data";
+import { jobRequestSchema } from "@/lib/forms";
+import type { Locale } from "@/lib/types";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import type { z } from "zod";
+
+const categoryOptions = [
+  { value: "FABRICATION", label: "Light manufacturing / fabrication" },
+  { value: "PACKAGING", label: "Packaging / processing" },
+  { value: "WAREHOUSING", label: "Warehousing" },
+  { value: "COLD_STORAGE", label: "Cold storage" },
+  { value: "LOGISTICS", label: "Transport / return-load logistics" },
+] as const;
+
+type FormInput = z.input<typeof jobRequestSchema>;
+type FormValues = z.output<typeof jobRequestSchema>;
+
+export function RequestForm({ locale }: { locale: Locale }) {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  const [submitting, setSubmitting] = useState(false);
+  const form = useForm<FormInput, undefined, FormValues>({
+    resolver: zodResolver(jobRequestSchema),
+    defaultValues: {
+      title: "",
+      category: "FABRICATION",
+      quantity: 250,
+      preferredLocation: "Harare",
+      deadline: "",
+      budgetMin: 1800,
+      budgetMax: 6400,
+      notes: "",
+      complianceRequirements: "",
+    },
+  });
+
+  const onSubmit = form.handleSubmit(async (values) => {
+    setSubmitting(true);
+    const response = await fetch("/api/demo/request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+    setSubmitting(false);
+
+    if (!response.ok) {
+      const payload = (await response.json()) as { error?: string };
+      toast.error(payload.error ?? "Unable to create the request.");
+      return;
+    }
+
+    const payload = (await response.json()) as { id: string };
+    toast.success("Requirement submitted. Ranked matches are ready.");
+    startTransition(() => {
+      router.push(`/${locale}/request/${payload.id}/matches`);
+    });
+  });
+
+  return (
+    <form onSubmit={onSubmit} className="grid gap-6 lg:grid-cols-2">
+      <div className="space-y-2 lg:col-span-2">
+        <Label htmlFor="title">Job title</Label>
+        <Input id="title" placeholder="Retail display stand fabrication run" {...form.register("title")} />
+        <p className="text-xs text-rose-600">{form.formState.errors.title?.message}</p>
+      </div>
+
+      <div className="space-y-2">
+        <Label>Capacity category</Label>
+        <Controller
+          control={form.control}
+          name="category"
+          render={({ field }) => (
+            <Select value={field.value} onValueChange={field.onChange}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                {categoryOptions.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="quantity">Quantity</Label>
+        <Input id="quantity" type="number" {...form.register("quantity")} />
+      </div>
+
+      <div className="space-y-2">
+        <Label>Preferred location</Label>
+        <Controller
+          control={form.control}
+          name="preferredLocation"
+          render={({ field }) => (
+            <Select value={field.value} onValueChange={field.onChange}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select city" />
+              </SelectTrigger>
+              <SelectContent>
+                {cities.map((city) => (
+                  <SelectItem key={city} value={city}>
+                    {city}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="deadline">Deadline</Label>
+        <div className="relative">
+          <CalendarDays className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-slate-400" />
+          <Input id="deadline" type="date" className="pl-10" {...form.register("deadline")} />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="budgetMin">Budget min (USD)</Label>
+        <Input id="budgetMin" type="number" {...form.register("budgetMin")} />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="budgetMax">Budget max (USD)</Label>
+        <Input id="budgetMax" type="number" {...form.register("budgetMax")} />
+      </div>
+
+      <div className="space-y-2 lg:col-span-2">
+        <Label htmlFor="notes">Requirement notes</Label>
+        <Textarea
+          id="notes"
+          placeholder="Provide the production scope, tolerances, packaging expectations, or dispatch needs."
+          {...form.register("notes")}
+        />
+      </div>
+
+      <div className="space-y-2 lg:col-span-2">
+        <Label htmlFor="complianceRequirements">Compliance requirements</Label>
+        <div className="relative">
+          <MapPin className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-slate-400" />
+          <Input
+            id="complianceRequirements"
+            className="pl-10"
+            placeholder="NDA, batch traceability, QA checklist, POD trail"
+            {...form.register("complianceRequirements")}
+          />
+        </div>
+      </div>
+
+      <div className="lg:col-span-2 flex items-center justify-between gap-4 rounded-[28px] border border-slate-200 bg-slate-50/80 p-4">
+        <p className="max-w-xl text-sm leading-6 text-slate-600">
+          Demo requests are validated server-side, stored in a secure demo cookie rail, and ranked
+          against verified capacity using rule-based matching.
+        </p>
+        <Button type="submit" className="min-w-44" disabled={submitting || pending}>
+          {submitting || pending ? (
+            <>
+              <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+              Matching...
+            </>
+          ) : (
+            "Submit requirement"
+          )}
+        </Button>
+      </div>
+    </form>
+  );
+}

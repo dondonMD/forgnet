@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eef3f7;
+  --foreground: #0f172a;
+  --brand-50: #ecfeff;
+  --brand-100: #cffafe;
+  --brand-200: #a5f3fc;
+  --brand-500: #0891b2;
+  --brand-600: #0f766e;
+  --brand-700: #155e75;
+  --navy-900: #081225;
+  --gold-500: #c89a3d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+  background-image:
+    radial-gradient(circle at top left, rgba(8, 145, 178, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(21, 94, 117, 0.16), transparent 22%),
+    linear-gradient(180deg, #f7fafc 0%, #eef3f7 100%);
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(8, 145, 178, 0.16);
+}
+
+.mesh-panel {
+  background-image:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.65)),
+    radial-gradient(circle at top left, rgba(8, 145, 178, 0.18), transparent 35%);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}

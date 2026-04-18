@@ -1,0 +1,222 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  BUYER
+  PROVIDER
+  ADMIN
+}
+
+enum CapacityCategory {
+  FABRICATION
+  PACKAGING
+  WAREHOUSING
+  COLD_STORAGE
+  LOGISTICS
+}
+
+enum VerificationStatus {
+  PENDING
+  REVIEWING
+  VERIFIED
+  FLAGGED
+}
+
+enum RequestStatus {
+  DRAFT
+  OPEN
+  MATCHED
+  QUOTED
+  BOOKED
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  ACCEPTED
+  DECLINED
+}
+
+enum BookingStatus {
+  REQUEST_SUBMITTED
+  PROVIDER_CONFIRMED
+  PRODUCTION_SCHEDULED
+  IN_PROGRESS
+  READY_FOR_DISPATCH
+  COMPLETED
+}
+
+enum MilestoneState {
+  COMPLETE
+  ACTIVE
+  UPCOMING
+}
+
+model User {
+  id              String            @id @default(cuid())
+  name            String
+  email           String            @unique
+  role            Role
+  providerProfile ProviderProfile?
+  jobRequests     JobRequest[]
+  bookings        Booking[]         @relation("BookingBuyer")
+  notifications   Notification[]
+  auditLogs       AuditLog[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model ProviderProfile {
+  id                     String               @id @default(cuid())
+  userId                 String               @unique
+  companyName            String
+  slug                   String               @unique
+  location               String
+  summary                String
+  verificationStatus     VerificationStatus
+  verificationBadgeLabel String
+  rating                 Float
+  completedJobs          Int
+  utilizationPercent     Int
+  capacitySharePercent   Int
+  responseHours          Int
+  minimumOrderValue      Int
+  categories             Json
+  user                   User                 @relation(fields: [userId], references: [id])
+  listings               CapacityListing[]
+  quotes                 Quote[]
+  bookings               Booking[]            @relation("BookingProvider")
+  verifications          VerificationRecord[]
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime             @updatedAt
+}
+
+model CapacityListing {
+  id                  String            @id @default(cuid())
+  providerId          String
+  title               String
+  category            CapacityCategory
+  city                String
+  region              String
+  availableCapacity   String
+  leadTimeDays        Int
+  estimatedPriceMin   Int
+  estimatedPriceMax   Int
+  unit                String
+  description         String
+  complianceSummary   String
+  verified            Boolean
+  tags                Json
+  provider            ProviderProfile   @relation(fields: [providerId], references: [id])
+  quotes              Quote[]
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+}
+
+model JobRequest {
+  id                    String          @id @default(cuid())
+  buyerId               String
+  title                 String
+  category              CapacityCategory
+  quantity              Int
+  preferredLocation     String
+  deadline              DateTime
+  budgetMin             Int
+  budgetMax             Int
+  notes                 String
+  complianceRequirements String?
+  status                RequestStatus
+  buyer                 User            @relation(fields: [buyerId], references: [id])
+  quotes                Quote[]
+  bookings              Booking[]
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+}
+
+model Quote {
+  id                 String           @id @default(cuid())
+  jobRequestId       String
+  providerId         String
+  listingId          String
+  price              Int
+  currency           String           @default("USD")
+  leadTimeDays       Int
+  validUntil         DateTime
+  notes              String
+  matchScore         Int
+  matchExplanation   String
+  status             QuoteStatus
+  jobRequest         JobRequest       @relation(fields: [jobRequestId], references: [id])
+  provider           ProviderProfile  @relation(fields: [providerId], references: [id])
+  listing            CapacityListing  @relation(fields: [listingId], references: [id])
+  bookings           Booking[]
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+}
+
+model Booking {
+  id                  String            @id @default(cuid())
+  jobRequestId        String
+  quoteId             String
+  buyerId             String
+  providerId          String
+  status              BookingStatus
+  contractAcknowledged Boolean          @default(false)
+  issueFlagged        Boolean           @default(false)
+  milestoneValue      Int
+  buyer               User              @relation("BookingBuyer", fields: [buyerId], references: [id])
+  provider            ProviderProfile   @relation("BookingProvider", fields: [providerId], references: [id])
+  jobRequest          JobRequest        @relation(fields: [jobRequestId], references: [id])
+  quote               Quote             @relation(fields: [quoteId], references: [id])
+  milestones          BookingMilestone[]
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+}
+
+model BookingMilestone {
+  id          String         @id @default(cuid())
+  bookingId   String
+  label       String
+  description String
+  sortOrder   Int
+  state       MilestoneState
+  booking     Booking        @relation(fields: [bookingId], references: [id])
+  createdAt   DateTime       @default(now())
+}
+
+model VerificationRecord {
+  id          String             @id @default(cuid())
+  providerId  String
+  title       String
+  status      VerificationStatus
+  notes       String
+  checkedAt   DateTime
+  provider    ProviderProfile    @relation(fields: [providerId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId     String
+  title      String
+  body       String
+  read       Boolean @default(false)
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId     String
+  action      String
+  entityType  String
+  entityId    String
+  detail      String
+  createdAt   DateTime @default(now())
+  actor       User     @relation(fields: [actorId], references: [id])
+}
