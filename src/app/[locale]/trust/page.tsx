@@ -34,6 +34,29 @@ export default function TrustPage() {
           </CardContent>
         </Card>
       </div>
+      <Card className="panel-muted">
+        <CardContent className="grid gap-4 p-6 md:grid-cols-3">
+          <div>
+            <div className="text-sm font-semibold text-slate-900">Verification model</div>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Providers move through pending, reviewing, and verified states with visible evidence
+              checkpoints.
+            </p>
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-slate-900">Operational records</div>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Bookings, milestone states, and moderation actions are shown as audit-friendly records.
+            </p>
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-slate-900">Payment language</div>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Milestone payment language is illustrative only and does not imply regulated custody.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
       <div className="grid gap-5 md:grid-cols-2">
         {demoVerificationRecords.map((record) => (
           <Card key={record.id}>

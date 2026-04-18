@@ -5,10 +5,17 @@ import type { Locale } from "@/lib/types";
 
 export default async function RequestPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: Locale }>;
+  searchParams: Promise<{
+    category?: string;
+    location?: string;
+    title?: string;
+  }>;
 }) {
   const { locale } = await params;
+  const { category, location, title } = await searchParams;
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-14 lg:grid-cols-[1.1fr_0.9fr]">
@@ -20,7 +27,21 @@ export default async function RequestPage({
         />
         <Card>
           <CardContent className="p-6">
-            <RequestForm locale={locale} />
+            <RequestForm
+              locale={locale}
+              initialValues={{
+                category:
+                  category === "FABRICATION" ||
+                  category === "PACKAGING" ||
+                  category === "WAREHOUSING" ||
+                  category === "COLD_STORAGE" ||
+                  category === "LOGISTICS"
+                    ? category
+                    : undefined,
+                preferredLocation: location,
+                title,
+              }}
+            />
           </CardContent>
         </Card>
       </div>

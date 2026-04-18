@@ -23,10 +23,22 @@ export default async function AdminPage({
 
   return (
     <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-14">
+      <Card className="panel-muted">
+        <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="text-sm font-semibold text-slate-900">Operations surface</div>
+            <p className="text-sm leading-6 text-slate-600">
+              The admin view is framed as moderation, verification, and booking oversight rather
+              than a generic SaaS analytics dashboard.
+            </p>
+          </div>
+          <Badge variant="warning">1 incident placeholder</Badge>
+        </CardContent>
+      </Card>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Pending verifications" value="4" trend="-1 today" />
+        <StatCard label="Pending verifications" value="3" trend="-1 today" />
         <StatCard label="Moderation queue" value="3" trend="stable" />
-        <StatCard label="Active bookings" value="7" trend="+2 this week" />
+        <StatCard label="Active bookings" value="3" trend="all visible" />
         <StatCard label="Incidents" value="1" trend="contained" />
       </div>
 

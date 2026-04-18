@@ -24,10 +24,22 @@ export default async function ProviderPage({
 
   return (
     <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-14">
+      <Card className="panel-muted">
+        <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="text-sm font-semibold text-slate-900">Provider surface</div>
+            <p className="text-sm leading-6 text-slate-600">
+              This dashboard shows how a verified operator would monitor matched demand, utilization,
+              and trust posture inside the ForgeNet pilot flow.
+            </p>
+          </div>
+          <Badge variant="success">Verification posture current</Badge>
+        </CardContent>
+      </Card>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Open requests" value="18" trend="+4 this week" />
-        <StatCard label="Active jobs" value="7" trend="+2 vs last week" />
-        <StatCard label="Available capacity" value="28%" trend="room to sell" />
+        <StatCard label="Open requests" value="8" trend="+2 this week" />
+        <StatCard label="Active jobs" value="3" trend="on schedule" />
+        <StatCard label="Available capacity" value="28%" trend="ready to sell" />
         <StatCard label="Utilization" value={formatPercent(72)} trend="+8%" />
       </div>
 

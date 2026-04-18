@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock3, MapPin, ShieldCheck, Star } from "lucide-react";
 import { categories } from "@/lib/demo-data";
 import { findListing, findProvider, findRequest, rankMatches } from "@/lib/marketplace";
@@ -23,8 +24,11 @@ export default async function MatchesPage({
     return (
       <div className="mx-auto w-full max-w-4xl px-6 py-16">
         <Card>
-          <CardContent className="p-8 text-center text-slate-600">
-            No request was found for this demo session. Submit a new requirement to generate matches.
+          <CardContent className="space-y-4 p-8 text-center text-slate-600">
+            <p>No request was found for this demo session. Submit a new requirement to generate matches.</p>
+            <Button asChild>
+              <Link href={`/${locale}/request`}>Create a requirement</Link>
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -32,6 +36,30 @@ export default async function MatchesPage({
   }
 
   const matches = rankMatches(request);
+
+  if (matches.length === 0) {
+    return (
+      <div className="mx-auto w-full max-w-5xl px-6 py-16">
+        <Card className="panel-muted">
+          <CardContent className="space-y-4 p-8 text-center">
+            <div className="text-2xl font-semibold text-slate-950">No direct capacity matches yet</div>
+            <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600">
+              Try widening the location, increasing the lead-time window, or reviewing trust rails
+              before posting a broader requirement.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button asChild>
+                <Link href={`/${locale}/request`}>Edit requirement</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href={`/${locale}/trust`}>Review trust rails</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-14">
@@ -94,6 +122,19 @@ export default async function MatchesPage({
           </CardContent>
         </Card>
       </div>
+
+      <Card className="panel-muted">
+        <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="text-sm font-semibold text-slate-900">Next step in the demo flow</div>
+            <p className="text-sm leading-6 text-slate-600">
+              Choose one ranked provider to generate a demo quote. Quote acceptance will open the
+              booking and milestone view.
+            </p>
+          </div>
+          <Badge variant="accent">{matches.length} ranked options</Badge>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-5">
         {matches.map((match, index) => {

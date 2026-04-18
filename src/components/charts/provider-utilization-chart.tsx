@@ -1,15 +1,26 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+function subscribe() {
+  return () => {};
+}
 
 export function ProviderUtilizationChart({
   data,
 }: {
   data: { month: string; utilization: number; demand: number }[];
 }) {
+  const mounted = useSyncExternalStore(subscribe, () => true, () => false);
+
+  if (!mounted) {
+    return <div className="h-[260px] min-h-[260px] w-full animate-pulse rounded-[24px] bg-slate-100" />;
+  }
+
   return (
-    <div className="h-[260px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="h-[260px] min-h-[260px] w-full min-w-0">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id="utilization" x1="0" x2="0" y1="0" y2="1">

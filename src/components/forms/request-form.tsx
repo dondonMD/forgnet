@@ -27,7 +27,13 @@ const categoryOptions = [
 type FormInput = z.input<typeof jobRequestSchema>;
 type FormValues = z.output<typeof jobRequestSchema>;
 
-export function RequestForm({ locale }: { locale: Locale }) {
+export function RequestForm({
+  locale,
+  initialValues,
+}: {
+  locale: Locale;
+  initialValues?: Partial<FormInput>;
+}) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [submitting, setSubmitting] = useState(false);
@@ -43,6 +49,7 @@ export function RequestForm({ locale }: { locale: Locale }) {
       budgetMax: 6400,
       notes: "",
       complianceRequirements: "",
+      ...initialValues,
     },
   });
 
@@ -101,6 +108,7 @@ export function RequestForm({ locale }: { locale: Locale }) {
       <div className="space-y-2">
         <Label htmlFor="quantity">Quantity</Label>
         <Input id="quantity" type="number" {...form.register("quantity")} />
+        <p className="text-xs text-rose-600">{form.formState.errors.quantity?.message}</p>
       </div>
 
       <div className="space-y-2">
@@ -131,16 +139,19 @@ export function RequestForm({ locale }: { locale: Locale }) {
           <CalendarDays className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-slate-400" />
           <Input id="deadline" type="date" className="pl-10" {...form.register("deadline")} />
         </div>
+        <p className="text-xs text-rose-600">{form.formState.errors.deadline?.message}</p>
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="budgetMin">Budget min (USD)</Label>
         <Input id="budgetMin" type="number" {...form.register("budgetMin")} />
+        <p className="text-xs text-rose-600">{form.formState.errors.budgetMin?.message}</p>
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="budgetMax">Budget max (USD)</Label>
         <Input id="budgetMax" type="number" {...form.register("budgetMax")} />
+        <p className="text-xs text-rose-600">{form.formState.errors.budgetMax?.message}</p>
       </div>
 
       <div className="space-y-2 lg:col-span-2">
@@ -150,6 +161,7 @@ export function RequestForm({ locale }: { locale: Locale }) {
           placeholder="Provide the production scope, tolerances, packaging expectations, or dispatch needs."
           {...form.register("notes")}
         />
+        <p className="text-xs text-rose-600">{form.formState.errors.notes?.message}</p>
       </div>
 
       <div className="space-y-2 lg:col-span-2">
@@ -163,21 +175,25 @@ export function RequestForm({ locale }: { locale: Locale }) {
             {...form.register("complianceRequirements")}
           />
         </div>
+        <p className="text-xs text-rose-600">{form.formState.errors.complianceRequirements?.message}</p>
       </div>
 
-      <div className="lg:col-span-2 flex items-center justify-between gap-4 rounded-[28px] border border-slate-200 bg-slate-50/80 p-4">
-        <p className="max-w-xl text-sm leading-6 text-slate-600">
-          Demo requests are validated server-side, stored in a secure demo cookie rail, and ranked
-          against verified capacity using rule-based matching.
-        </p>
+      <div className="panel-muted lg:col-span-2 flex flex-col items-start justify-between gap-4 rounded-[28px] border border-slate-200 p-5 md:flex-row md:items-center">
+        <div className="space-y-1">
+          <p className="max-w-xl text-sm font-medium text-slate-900">What happens next</p>
+          <p className="max-w-xl text-sm leading-6 text-slate-600">
+            ForgeNet validates the requirement, stores it in the demo session rail, and ranks live
+            marketplace matches by fit, timing, location, trust status, and commercial alignment.
+          </p>
+        </div>
         <Button type="submit" className="min-w-44" disabled={submitting || pending}>
           {submitting || pending ? (
             <>
               <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-              Matching...
+              Ranking capacity...
             </>
           ) : (
-            "Submit requirement"
+            "Generate ranked matches"
           )}
         </Button>
       </div>

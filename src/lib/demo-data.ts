@@ -866,13 +866,13 @@ export const quoteLookup = Object.fromEntries(demoQuotes.map((quote) => [quote.i
 export const bookingLookup = Object.fromEntries(demoBookings.map((booking) => [booking.id, booking]));
 
 export const kpiSnapshot = {
-  providers: 14,
+  providers: 11,
   listings: 12,
-  buyerRequests: 58,
+  buyerRequests: 8,
   quotes: 10,
-  activeBookings: 7,
+  activeBookings: 3,
   averageMatchScore: 88,
-  verifiedProviders: 10,
+  verifiedProviders: 8,
   onTimeRate: 94,
 };
 

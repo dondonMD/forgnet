@@ -3,6 +3,7 @@
 :root {
   --background: #eef3f7;
   --foreground: #0f172a;
+  --surface: rgba(255, 255, 255, 0.82);
   --brand-50: #ecfeff;
   --brand-100: #cffafe;
   --brand-200: #a5f3fc;
@@ -10,6 +11,7 @@
   --brand-600: #0f766e;
   --brand-700: #155e75;
   --navy-900: #081225;
+  --navy-800: #10223b;
   --gold-500: #c89a3d;
 }
 
@@ -32,6 +34,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
+  line-height: 1.5;
   background-image:
     radial-gradient(circle at top left, rgba(8, 145, 178, 0.12), transparent 28%),
     radial-gradient(circle at top right, rgba(21, 94, 117, 0.16), transparent 22%),
@@ -57,6 +60,19 @@ a {
     linear-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px),
     linear-gradient(90deg, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
   background-size: 56px 56px;
+}
+
+.page-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.5rem;
+  padding-block: 3.5rem;
+}
+
+.panel-muted {
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(255, 255, 255, 0.82));
 }
 
 .text-balance {

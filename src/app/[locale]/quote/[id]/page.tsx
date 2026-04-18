@@ -68,6 +68,14 @@ export default async function QuotePage({
             <p className="mt-2 text-sm leading-7 text-slate-600">{quote.notes}</p>
             <div className="mt-4 text-sm text-slate-500">{listing.complianceSummary}</div>
           </div>
+          <div className="panel-muted rounded-[28px] border border-slate-200 p-5">
+            <div className="text-sm font-semibold text-slate-900">What the buyer can explain in the demo</div>
+            <div className="mt-3 grid gap-3 text-sm leading-6 text-slate-600 sm:grid-cols-3">
+              <div>Why this provider ranked well</div>
+              <div>What trust checks are visible</div>
+              <div>How the booking progresses through milestones</div>
+            </div>
+          </div>
           <div className="flex flex-wrap gap-3">
             <form action={acceptQuoteAction}>
               <input type="hidden" name="locale" value={locale} />
@@ -108,9 +116,9 @@ export default async function QuotePage({
             <CardTitle>Important demo posture</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm leading-7 text-slate-600">
-            <div>No live payments are processed.</div>
-            <div>Escrow and dispute handling are mocked as governance rails.</div>
-            <div>Verification signals indicate workflow readiness, not legal certification.</div>
+            <div>No live payments are processed or held in custody.</div>
+            <div>Escrow and dispute handling are represented as governance rails only.</div>
+            <div>Verification signals show workflow readiness, not legal certification or approval.</div>
           </CardContent>
         </Card>
       </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { bookingLookup } from "@/lib/demo-data";
 import { findProvider } from "@/lib/marketplace";
 import { getLiveBooking } from "@/lib/session";
@@ -12,12 +13,29 @@ export default async function BookingPage({
 }: {
   params: Promise<{ locale: Locale; id: string }>;
 }) {
-  const { id } = await params;
+  const { locale, id } = await params;
   const liveBooking = await getLiveBooking();
   const booking = (liveBooking && liveBooking.id === id ? liveBooking : null) ?? bookingLookup[id];
 
   if (!booking) {
-    return null;
+    return (
+      <div className="mx-auto w-full max-w-5xl px-6 py-16">
+        <Card className="panel-muted">
+          <CardContent className="space-y-4 p-8 text-center">
+            <div className="text-2xl font-semibold text-slate-950">No booking found for this demo session</div>
+            <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600">
+              Accept a quote first to open the milestone-based booking flow.
+            </p>
+            <Link
+              href={`/${locale}/request`}
+              className="inline-flex h-11 items-center justify-center rounded-full bg-[var(--brand-600)] px-5 text-sm font-semibold text-white"
+            >
+              Start buyer flow
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   const provider = findProvider(booking.providerId);
@@ -42,6 +60,13 @@ export default async function BookingPage({
               <span>{progress}%</span>
             </div>
             <Progress value={progress} />
+          </div>
+          <div className="panel-muted rounded-[28px] border border-slate-200 p-5">
+            <div className="text-sm font-semibold text-slate-900">Flow status</div>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              The booking has been confirmed and is now tracked through an audit-friendly milestone
+              timeline that buyer, provider, and operations can all reference during the demo.
+            </p>
           </div>
           <div className="grid gap-4">
             {booking.milestones.map((milestone) => (
