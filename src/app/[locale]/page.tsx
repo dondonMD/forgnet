@@ -31,7 +31,7 @@ export default async function LandingPage({
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
           <FadeIn className="space-y-8">
             <Badge variant="accent" className="w-fit">
-              Industrial capacity exchange
+              Regional Capacity Exchange
             </Badge>
             <div className="space-y-6">
               <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl">
@@ -57,7 +57,7 @@ export default async function LandingPage({
             <div className="grid gap-4 sm:grid-cols-3">
               <StatCard label="Verified providers" value={`${kpiSnapshot.verifiedProviders}`} trend="+21% QoQ" />
               <StatCard label="Average match score" value={`${kpiSnapshot.averageMatchScore}%`} trend="+6 pts" />
-              <StatCard label="On-time demo jobs" value={`${kpiSnapshot.onTimeRate}%`} trend="+9%" />
+              <StatCard label="On-time completion" value={`${kpiSnapshot.onTimeRate}%`} trend="+9%" />
             </div>
           </FadeIn>
 
@@ -66,24 +66,24 @@ export default async function LandingPage({
               <CardContent className="space-y-6 p-8">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-sm font-medium text-slate-500">Current demo role</div>
-                    <div className="text-2xl font-semibold text-slate-950">{role}</div>
+                    <div className="text-sm font-medium text-slate-500">Current authorization</div>
+                    <div className="text-2xl font-semibold text-slate-950 capitalize">{role}</div>
                   </div>
                   <div className="rounded-full bg-[var(--navy-900)] px-4 py-2 text-xs font-semibold text-white">
-                    Enterprise-ready posture
+                    Production active
                   </div>
                 </div>
                 <div className="rounded-[28px] bg-[var(--navy-900)] p-6 text-white shadow-xl">
                   <div className="mb-4 flex items-center gap-2 text-sm text-white/70">
                     <Workflow className="h-4 w-4" />
-                    Demo flow
+                    Operational lifecycle
                   </div>
                   <div className="grid gap-3">
                     {[
-                      "Buyer posts need",
-                      "ForgeNet ranks verified capacity",
-                      "Provider quote accepted",
-                      "Milestones tracked through completion",
+                      "Placement of requirement",
+                      "Automated capacity ranking",
+                      "Quote authorization",
+                      "Milestone-based execution",
                     ].map((step, index) => (
                       <div key={step} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3">
                         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-sm font-semibold">
@@ -271,16 +271,16 @@ export default async function LandingPage({
         <Card className="overflow-hidden bg-[linear-gradient(135deg,var(--navy-900),#12324d)] text-white">
           <CardContent className="flex flex-col gap-8 p-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl space-y-3">
-              <div className="text-sm uppercase tracking-[0.24em] text-white/60">Demo-ready MVP</div>
-              <h3 className="text-3xl font-semibold">Show the full capacity exchange story in one run.</h3>
+              <div className="text-sm uppercase tracking-[0.24em] text-white/60">Regional Platform</div>
+              <h3 className="text-3xl font-semibold">Scale your industrial oversight today.</h3>
               <p className="text-sm leading-7 text-white/72">
-                Launch the buyer flow, inspect the marketplace, and switch roles to review the
-                provider and operations surfaces using seeded Zimbabwe-relevant capacity data.
+                Launch your first requirement, inspect the regional marketplace, and manage your
+                production pipeline with verified capacity data.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="outline" size="lg">
-                <Link href={`/${locale}/login`}>Switch demo role</Link>
+                <Link href={`/${locale}/login`}>Switch workspace</Link>
               </Button>
               <Button asChild size="lg">
                 <Link href={`/${locale}/request`}>Start buyer flow</Link>

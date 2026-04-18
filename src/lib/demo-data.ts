@@ -35,7 +35,7 @@ const milestones = [
   },
   {
     label: "Completed",
-    description: "Buyer sign-off recorded for the demo trail.",
+    description: "Final job completion signoff and handover documentation recorded.",
   },
 ] as const;
 

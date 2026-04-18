@@ -222,7 +222,7 @@ export function MarketplaceExplorer({
               </div>
               <p className="text-sm leading-6 text-slate-600">
                 Suited to {categories[listing.category].toLowerCase()} work in {listing.city}, with visible capacity,
-                published lead times, and an investor-demo-ready trust signal layer.
+                published lead times, and a transparent trust signal layer.
               </p>
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Star className="h-4 w-4 fill-amber-400 text-amber-400" />

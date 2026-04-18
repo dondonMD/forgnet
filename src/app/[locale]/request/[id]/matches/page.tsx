@@ -25,7 +25,7 @@ export default async function MatchesPage({
       <div className="mx-auto w-full max-w-4xl px-6 py-16">
         <Card>
           <CardContent className="space-y-4 p-8 text-center text-slate-600">
-            <p>No request was found for this demo session. Submit a new requirement to generate matches.</p>
+            <p>No active request found. Submit a new requirement to generate capacity matches.</p>
             <Button asChild>
               <Link href={`/${locale}/request`}>Create a requirement</Link>
             </Button>
@@ -126,10 +126,10 @@ export default async function MatchesPage({
       <Card className="panel-muted">
         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-sm font-semibold text-slate-900">Next step in the demo flow</div>
+            <div className="text-sm font-semibold text-slate-900">Procurement Workflow</div>
             <p className="text-sm leading-6 text-slate-600">
-              Choose one ranked provider to generate a demo quote. Quote acceptance will open the
-              booking and milestone view.
+              Select a ranked provider to request an official quote. Upon acceptance, the system
+              will initialize the milestone-based booking and oversight surface.
             </p>
           </div>
           <Badge variant="accent">{matches.length} ranked options</Badge>

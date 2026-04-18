@@ -55,7 +55,7 @@ export function RequestForm({
 
   const onSubmit = form.handleSubmit(async (values) => {
     setSubmitting(true);
-    const response = await fetch("/api/demo/request", {
+    const response = await fetch("/api/marketplace/request", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -182,8 +182,8 @@ export function RequestForm({
         <div className="space-y-1">
           <p className="max-w-xl text-sm font-medium text-slate-900">What happens next</p>
           <p className="max-w-xl text-sm leading-6 text-slate-600">
-            ForgeNet validates the requirement, stores it in the demo session rail, and ranks live
-            marketplace matches by fit, timing, location, trust status, and commercial alignment.
+            ForgeNet validates the requirement, authorizes the job profile, and ranks active
+            marketplace capacity by fit, timing, location, trust status, and commercial alignment.
           </p>
         </div>
         <Button type="submit" className="min-w-44" disabled={submitting || pending}>

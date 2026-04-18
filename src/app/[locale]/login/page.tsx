@@ -1,5 +1,5 @@
 import { LockKeyhole, ShieldCheck } from "lucide-react";
-import { demoLoginAction } from "@/app/[locale]/actions";
+import { authenticateAction } from "@/app/[locale]/actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getMessages } from "@/lib/messages";
@@ -74,19 +74,10 @@ export default async function LoginPage({
               <CardDescription>{role.detail}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-5">
-              <div className="rounded-[24px] bg-slate-50 p-4 text-sm leading-7 text-slate-600">
-                <div className="font-medium text-slate-900">{role.email}</div>
-                <div>{role.password}</div>
-              </div>
               <div className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-600">
-                Next step:{" "}
-                {role.id === "buyer"
-                  ? "submit a requirement and review ranked matches."
-                  : role.id === "provider"
-                    ? "review open demand and utilization signals."
-                    : "inspect trust rails, moderation, and booking oversight."}
+                <span className="font-semibold text-slate-900 capitalize">{role.id}</span> authorization for production oversight and marketplace activity.
               </div>
-              <form action={demoLoginAction} className="space-y-3">
+              <form action={authenticateAction} className="space-y-3">
                 <input type="hidden" name="role" value={role.id} />
                 <input type="hidden" name="locale" value={locale} />
                 <input
@@ -96,7 +87,7 @@ export default async function LoginPage({
                 />
                 <Button type="submit" className="w-full">
                   <LockKeyhole className="mr-2 h-4 w-4" />
-                  Continue as {role.title}
+                  Access {role.title} Portal
                 </Button>
               </form>
             </CardContent>

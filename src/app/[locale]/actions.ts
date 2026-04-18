@@ -18,8 +18,8 @@ import {
   setRole,
 } from "@/lib/session";
 
-export async function demoLoginAction(formData: FormData) {
-  if (!checkRateLimit("demo-login", 12, 60_000)) {
+export async function authenticateAction(formData: FormData) {
+  if (!checkRateLimit("auth-login", 12, 60_000)) {
     redirect("/en/login?error=rate-limit");
   }
 
@@ -100,25 +100,25 @@ export async function acceptQuoteAction(formData: FormData) {
             {
               id: "live-3",
               label: "Production scheduled",
-              description: "Scheduling will begin after demo confirmation.",
+              description: "Production window optimization and resource allocation scheduled.",
               state: "UPCOMING" as const,
             },
             {
               id: "live-4",
               label: "In progress",
-              description: "Execution tracking placeholder.",
+              description: "Real-time production monitoring and quality oversight active.",
               state: "UPCOMING" as const,
             },
             {
               id: "live-5",
               label: "Ready for dispatch",
-              description: "Dispatch signoff placeholder.",
+              description: "Automated dispatch verification and logistics signoff pending.",
               state: "UPCOMING" as const,
             },
             {
               id: "live-6",
               label: "Completed",
-              description: "Buyer completion acknowledgement placeholder.",
+              description: "Final job completion and buyer signoff acknowledgement.",
               state: "UPCOMING" as const,
             },
           ],

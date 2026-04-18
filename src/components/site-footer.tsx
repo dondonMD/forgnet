@@ -16,14 +16,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </div>
             <div>
               <div className="text-lg font-semibold text-slate-950">ForgeNet</div>
-              <div className="text-xs uppercase tracking-[0.22em] text-slate-500">Demo-ready platform</div>
+              <div className="text-xs uppercase tracking-[0.22em] text-slate-500">Capacity Exchange</div>
             </div>
           </div>
           <p className="text-sm leading-7 text-slate-600">{t.footer.description}</p>
-          <div className="flex items-start gap-2 rounded-[24px] border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-600">
-            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-600)]" />
-            <span>{t.footer.note}</span>
-          </div>
         </div>
         <div className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
           <Link href={`/${locale}/marketplace`} className="rounded-2xl border border-slate-200 px-4 py-3 hover:text-slate-950">

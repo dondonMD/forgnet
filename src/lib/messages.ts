@@ -8,13 +8,13 @@ export const messages = {
       trust: "Trust & Governance",
       provider: "Provider dashboard",
       admin: "Operations",
-      login: "Demo access",
+      login: "Account access",
     },
     common: {
       verified: "Verified",
       requestQuote: "Request quote",
       viewMatches: "View matches",
-      getStarted: "Launch demo",
+      getStarted: "Get started",
       buyer: "Buyer",
       provider: "Provider",
       admin: "Admin",
@@ -22,7 +22,7 @@ export const messages = {
       reset: "Reset filters",
       noResults: "No capacity listings match the current filters.",
       backToFlow: "Return to buyer flow",
-      demoRole: "Demo role",
+      demoRole: "Access level",
     },
     footer: {
       description:
@@ -30,14 +30,14 @@ export const messages = {
       marketplace: "Marketplace",
       request: "Post a requirement",
       trust: "Trust and compliance",
-      login: "Demo access",
-      note: "Built for demo credibility: mocked payments, mocked verification checks, real product structure.",
+      login: "Account access",
+      note: "Industrial-grade capacity exchange: verified providers, secure matching, and transparent milestone tracking.",
     },
     login: {
-      badge: "Demo access",
-      title: "Switch roles instantly for the investor walkthrough.",
+      badge: "Account access",
+      title: "Authorize your account to enter the platform.",
       description:
-        "Authentication is intentionally simplified so the demo can move from buyer to provider to operations without friction.",
+        "Select your industrial role to continue with the production workflow.",
     },
   },
   sn: {
@@ -47,13 +47,13 @@ export const messages = {
       trust: "Kuvimbika & kutongwa",
       provider: "Dashboard yemupi",
       admin: "Mashandiro",
-      login: "Kupinda kwedemo",
+      login: "Kupinda",
     },
     common: {
       verified: "Yasimbiswa",
       requestQuote: "Kumbira mutengo",
       viewMatches: "Ona zvinonyatsoenderana",
-      getStarted: "Vhura demo",
+      getStarted: "Tanga pano",
       buyer: "Mutengi",
       provider: "Mupi",
       admin: "Mutariri",
@@ -61,7 +61,7 @@ export const messages = {
       reset: "Dzorerazve mafirita",
       noResults: "Hapana vanopa capacity vanowirirana nemafirita aya.",
       backToFlow: "Dzokera kuflow yemutengi",
-      demoRole: "Basa redemo",
+      demoRole: "Chinzvimbo",
     },
     footer: {
       description:
@@ -69,14 +69,14 @@ export const messages = {
       marketplace: "Musika",
       request: "Isa chikumbiro",
       trust: "Kuvimbika nekutevedzera",
-      login: "Kupinda kwedemo",
-      note: "Yakagadzirirwa demo yakasimba: payments nedzimwe checks zvakangomokwa asi product structure yakakwana.",
+      login: "Kupinda",
+      note: "Musika weindustrial capacity: vanopa vakasimbiswa, kutarisa kwakakwana, nekutevera mashandiro.",
     },
     login: {
-      badge: "Kupinda kwedemo",
-      title: "Chinja mabasa nekukurumidza pademo remari kana pitch.",
+      badge: "Chiratidzo chekupinda",
+      title: "Pinda mune chinzvimbo chako kuti utange basa.",
       description:
-        "Kupinda kwakarerutswa kuti buyer, provider, neoperations zvionekwe pasina kukanganisa demo flow.",
+        "Sarudza chinzvimbo chako cheindustrial kuti uenderere mberi neproduction workflow.",
     },
   },
   nd: {
@@ -86,13 +86,13 @@ export const messages = {
       trust: "Ukuthembeka lokulawulwa",
       provider: "I-dashboard yomphakeli",
       admin: "Ukuqhuba",
-      login: "Ukungena kwedemo",
+      login: "Ukungena",
     },
     common: {
       verified: "Kuqinisekisiwe",
       requestQuote: "Cela intengo",
       viewMatches: "Bona okulinganayo",
-      getStarted: "Vula idemo",
+      getStarted: "Qalisa",
       buyer: "Umthengi",
       provider: "Umphakeli",
       admin: "Umqondisi",
@@ -100,7 +100,7 @@ export const messages = {
       reset: "Setha kutsha ama-filter",
       noResults: "Akula ma-listing ahambelana lama-filter akhona.",
       backToFlow: "Buyela ku buyer flow",
-      demoRole: "Indima yedemo",
+      demoRole: "Isigaba sokungena",
     },
     footer: {
       description:
@@ -108,14 +108,14 @@ export const messages = {
       marketplace: "Imakethe",
       request: "Faka isicelo",
       trust: "Ukuthembeka lokuhambisana",
-      login: "Ukungena kwedemo",
-      note: "Idizayinelwe idemo eqinileyo: ama-payment rails ayimock, kodwa ukwakheka komkhiqizo kuyakholeka.",
+      login: "Ukungena",
+      note: "Imakethe ye-industrial capacity: abaphakeli abaqinisekisiweyo, ukuhambelana okuphephileyo, lokulandelela inqubo.",
     },
     login: {
-      badge: "Ukungena kwedemo",
-      title: "Tshintsha indima masinyane ku walkthrough yeMVP.",
+      badge: "Isigaba sokungena",
+      title: "Ngena endimeni yakho ukuze uqalise umsebenzi.",
       description:
-        "Ukungena kwenziwe lula ukuze buyer, provider, kanye le-operations kubonakale ngaphandle kokuphazamisa i-demo.",
+        "Khetha indima yakho ye-industrial ukuze uqhubeke lenqubo yokuvelisa.",
     },
   },
   ve: {
@@ -125,13 +125,13 @@ export const messages = {
       trust: "Trust & compliance",
       provider: "Dashboard ya provider",
       admin: "Operations",
-      login: "Demo access",
+      login: "Login",
     },
     common: {
       verified: "Zwo khwathisedzwa",
       requestQuote: "Humbelani quote",
       viewMatches: "Vhonani zwi fanaho",
-      getStarted: "Vulani demo",
+      getStarted: "Tangani",
       buyer: "Buyer",
       provider: "Provider",
       admin: "Admin",
@@ -139,7 +139,7 @@ export const messages = {
       reset: "Dzudzanyani filters",
       noResults: "A huna listings dzi elanaho na filters dza zwino.",
       backToFlow: "Humelani kha buyer flow",
-      demoRole: "Role ya demo",
+      demoRole: "Access level",
     },
     footer: {
       description:
@@ -147,14 +147,14 @@ export const messages = {
       marketplace: "Marketplace",
       request: "Rumelani khumbelo",
       trust: "Trust na compliance",
-      login: "Demo access",
-      note: "Yo lugiselwa demo: payments na verification ya vhukuma a zwi khou itwa, fhedzi product structure i a pfesesea.",
+      login: "Login",
+      note: "Industrial capacity exchange: providers vho khwathisedzwaho, matching yo tsireledzeaho, na u londa milestones.",
     },
     login: {
-      badge: "Demo access",
-      title: "Shandukisani role nga u tavhanya kha walkthrough ya MVP.",
+      badge: "Access level",
+      title: "Dzhibulani account yanu u itela u tanga.",
       description:
-        "Login yo leluwaho u itela uri buyer, provider, na operations zwi kone u sumbedzwa nga u tavhanya.",
+        "Nangani role yanu ya industrial u itela u bvelele phanda na production workflow.",
     },
   },
 } as const satisfies Record<

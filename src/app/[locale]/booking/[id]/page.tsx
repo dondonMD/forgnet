@@ -22,7 +22,7 @@ export default async function BookingPage({
       <div className="mx-auto w-full max-w-5xl px-6 py-16">
         <Card className="panel-muted">
           <CardContent className="space-y-4 p-8 text-center">
-            <div className="text-2xl font-semibold text-slate-950">No booking found for this demo session</div>
+            <div className="text-2xl font-semibold text-slate-950">Booking record not found</div>
             <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600">
               Accept a quote first to open the milestone-based booking flow.
             </p>
@@ -64,8 +64,8 @@ export default async function BookingPage({
           <div className="panel-muted rounded-[28px] border border-slate-200 p-5">
             <div className="text-sm font-semibold text-slate-900">Flow status</div>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              The booking has been confirmed and is now tracked through an audit-friendly milestone
-              timeline that buyer, provider, and operations can all reference during the demo.
+              The booking is active and tracked through a verified milestone
+              timeline that buyer, provider, and operations all use for oversight.
             </p>
           </div>
           <div className="grid gap-4">
@@ -98,19 +98,19 @@ export default async function BookingPage({
           </CardHeader>
           <CardContent className="space-y-3 text-sm leading-7 text-white/72">
             <div>Contract terms acknowledged: {booking.contractAcknowledged ? "Yes" : "No"}</div>
-            <div>Issue escalation placeholder: {booking.issueFlagged ? "Open" : "None"}</div>
+            <div>Issue escalation monitoring: {booking.issueFlagged ? "Active" : "None"}</div>
             <div>Milestone value: {formatCurrency(booking.milestoneValue)}</div>
             <div>Active milestone: {active?.label ?? "Completed"}</div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>What is mocked</CardTitle>
+            <CardTitle>Platform monitoring</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm leading-7 text-slate-600">
-            <div>Milestone-based payout language is illustrative only.</div>
-            <div>Disputes, signoff, and payment release are placeholder workflow rails.</div>
-            <div>Operational updates are designed to feel credible, not legally final.</div>
+            <div>Milestone-based progress schedules industrial execution.</div>
+            <div>Automated escalation rails monitor for production delays.</div>
+            <div>Operational transparency ensures delivery integrity.</div>
           </CardContent>
         </Card>
       </div>

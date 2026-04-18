@@ -27,10 +27,10 @@ export default async function ProviderPage({
       <Card className="panel-muted">
         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-sm font-semibold text-slate-900">Provider surface</div>
+            <div className="text-sm font-semibold text-slate-900">Operator Oversight</div>
             <p className="text-sm leading-6 text-slate-600">
-              This dashboard shows how a verified operator would monitor matched demand, utilization,
-              and trust posture inside the ForgeNet pilot flow.
+              Verified operator dashboard for monitoring matched demand, capacity utilization,
+              and transaction integrity across active production lifecycles.
             </p>
           </div>
           <Badge variant="success">Verification posture current</Badge>

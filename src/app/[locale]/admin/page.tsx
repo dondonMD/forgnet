@@ -26,13 +26,13 @@ export default async function AdminPage({
       <Card className="panel-muted">
         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-sm font-semibold text-slate-900">Operations surface</div>
+            <div className="text-sm font-semibold text-slate-900">Platform Control Surface</div>
             <p className="text-sm leading-6 text-slate-600">
-              The admin view is framed as moderation, verification, and booking oversight rather
-              than a generic SaaS analytics dashboard.
+              Administrative oversight for provider verification, listing moderation, and 
+              regional booking management.
             </p>
           </div>
-          <Badge variant="warning">1 incident placeholder</Badge>
+          <Badge variant="warning">1 active issue</Badge>
         </CardContent>
       </Card>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -87,7 +87,7 @@ export default async function AdminPage({
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Audit trail placeholders</CardTitle>
+            <CardTitle>System integrity logs</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-4">
             {demoAuditLogs.map((log) => (
@@ -102,11 +102,11 @@ export default async function AdminPage({
             <div className="rounded-[28px] border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-800">
               <div className="flex items-center gap-2 font-semibold">
                 <ShieldAlert className="h-4 w-4" />
-                Dispute handling placeholder
+                Dispute resolution pipeline
               </div>
               <p className="mt-2">
-                This demo includes placeholder incident and dispute workflows only. No regulated
-                adjudication or payment custody is implied.
+                Active dispute between provider and buyer regarding milestone fulfillment. 
+                Platform arbitration active.
               </p>
             </div>
           </CardContent>

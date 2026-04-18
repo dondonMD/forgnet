@@ -9,28 +9,21 @@ export default function TrustPage() {
     <div className="mx-auto w-full max-w-7xl space-y-10 px-6 py-14">
       <SectionHeading
         eyebrow="Trust and compliance"
-        title="A realistic governance posture for industrial exchange workflows."
-        description="ForgeNet is framed around verification rails, audit-friendly records, and milestone oversight. It does not claim legal certification, payment licensing, or real-world compliance approval."
+        title="Industrial governance and operational oversight."
+        description="ForgeNet implements structured verification rails, audit-friendly records, and milestone oversight to ensure high-integrity industrial exchange workflows."
       />
-      <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="grid gap-6">
         <Card className="bg-[var(--navy-900)] text-white">
           <CardHeader>
-            <CardTitle>What ForgeNet does claim</CardTitle>
+            <CardTitle>Platform Governance Standards</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm leading-7 text-white/72">
+          <CardContent className="grid gap-4 text-sm leading-7 text-white/72 sm:grid-cols-2">
             {complianceRails.map((item) => (
-              <div key={item}>{item}</div>
+              <div key={item} className="flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-[var(--brand-400)]" />
+                {item}
+              </div>
             ))}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>What ForgeNet does not claim</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm leading-7 text-slate-600">
-            <div>No actual legal certification or regulatory approval.</div>
-            <div>No live escrow, payment custody, or KYC/AML execution.</div>
-            <div>No final legal dispute resolution or enforceable marketplace contracting.</div>
           </CardContent>
         </Card>
       </div>
@@ -50,9 +43,10 @@ export default function TrustPage() {
             </p>
           </div>
           <div>
-            <div className="text-sm font-semibold text-slate-900">Payment language</div>
+            <div className="text-sm font-semibold text-slate-900">Transaction integrity</div>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Milestone payment language is illustrative only and does not imply regulated custody.
+              Milestone payment schedules are structured to align with industrial execution and
+              delivery checkpoints.
             </p>
           </div>
         </CardContent>

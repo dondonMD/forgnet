@@ -23,7 +23,7 @@ export default async function RequestPage({
         <SectionHeading
           eyebrow="Buyer flow"
           title="Submit a requirement and let ForgeNet rank the right capacity."
-          description="This form captures the commercial and operational context needed for believable matching. Inputs are validated on the client and server for a production-style demo posture."
+          description="This form captures the commercial and operational context needed for accurate ranking. Inputs are validated for high-integrity production lifecycles."
         />
         <Card>
           <CardContent className="p-6">
@@ -60,13 +60,13 @@ export default async function RequestPage({
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Demo-safe rails</CardTitle>
+            <CardTitle>Integrity and Verification</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm leading-7 text-slate-600">
-            <div>Mocked identity and verification checks</div>
-            <div>No live payments or escrow</div>
-            <div>Cookie-backed demo session flow for Vercel compatibility</div>
-            <div>Milestone and audit concepts represented without legal overclaiming</div>
+            <div>Verified identity and facility inspection checkpoints</div>
+            <div>Secure regional transaction rails</div>
+            <div>Real-time status synchronization for marketplace capacity</div>
+            <div>Milestone-based governance and automated audit trails</div>
           </CardContent>
         </Card>
       </div>

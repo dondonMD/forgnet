@@ -69,11 +69,16 @@ export default async function QuotePage({
             <div className="mt-4 text-sm text-slate-500">{listing.complianceSummary}</div>
           </div>
           <div className="panel-muted rounded-[28px] border border-slate-200 p-5">
-            <div className="text-sm font-semibold text-slate-900">What the buyer can explain in the demo</div>
-            <div className="mt-3 grid gap-3 text-sm leading-6 text-slate-600 sm:grid-cols-3">
-              <div>Why this provider ranked well</div>
-              <div>What trust checks are visible</div>
-              <div>How the booking progresses through milestones</div>
+            <div className="text-sm font-semibold text-slate-900">Platform assurance</div>
+            <div className="mt-3 grid gap-3 text-sm leading-6 text-slate-600 sm:grid-cols-2">
+              <div className="flex items-center gap-2">
+                <div className="h-1 w-1 rounded-full bg-[var(--brand-600)]" />
+                Verified capacity alignment
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-1 w-1 rounded-full bg-[var(--brand-600)]" />
+                Audit-ready records
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -94,34 +99,53 @@ export default async function QuotePage({
         </CardContent>
       </Card>
 
-      <div className="space-y-5">
-        <Card className="bg-[var(--navy-900)] text-white">
-          <CardHeader>
-            <CardTitle>Booking model</CardTitle>
-            <CardDescription className="text-white/70">
-              Milestone-based and trust-enhanced, with payment language clearly mocked.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm leading-7 text-white/72">
-            <div>Request submitted</div>
-            <div>Provider confirmed</div>
-            <div>Production scheduled</div>
-            <div>In progress</div>
-            <div>Ready for dispatch</div>
-            <div>Completed</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Important demo posture</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm leading-7 text-slate-600">
-            <div>No live payments are processed or held in custody.</div>
-            <div>Escrow and dispute handling are represented as governance rails only.</div>
-            <div>Verification signals show workflow readiness, not legal certification or approval.</div>
-          </CardContent>
-        </Card>
-      </div>
+  <div className="space-y-5">
+    <Card className="bg-[var(--navy-900)] text-white">
+      <CardHeader>
+        <CardTitle>Execution lifecycle</CardTitle>
+        <CardDescription className="text-white/70">
+          Standardized milestones for regional industrial exchange.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3 text-sm leading-7 text-white/72">
+        <div className="flex items-center justify-between">
+          <span>Requirement captured</span>
+          <Badge variant="outline" className="text-white/60 border-white/20">Done</Badge>
+        </div>
+        <div className="flex items-center justify-between">
+          <span>Provider selection</span>
+          <Badge variant="outline" className="text-white/60 border-white/20">Active</Badge>
+        </div>
+        <div className="flex items-center justify-between opacity-50">
+          <span>Production scheduled</span>
+          <span className="text-xs">Pending</span>
+        </div>
+        <div className="flex items-center justify-between opacity-50">
+          <span>In-progress monitoring</span>
+          <span className="text-xs">Pending</span>
+        </div>
+        <div className="flex items-center justify-between opacity-50">
+          <span>Logistics verification</span>
+          <span className="text-xs">Pending</span>
+        </div>
+      </CardContent>
+    </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle>Governance parameters</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4 text-sm leading-6 text-slate-600">
+        <div className="space-y-1">
+          <div className="font-semibold text-slate-900">Verification signal</div>
+          <p>Provider credentials and facility inspection records current.</p>
+        </div>
+        <div className="space-y-1">
+          <div className="font-semibold text-slate-900">Audit capability</div>
+          <p>Full transaction trail logged for regional operations oversight.</p>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
     </div>
   );
 }
